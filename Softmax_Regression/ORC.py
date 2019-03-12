@@ -1,7 +1,6 @@
 from tensorflow.examples.tutorials.mnist import input_data
 import tensorflow as tf
 
-
 mnist = input_data.read_data_sets("./", one_hot=True)
 sess = tf.InteractiveSession()
 x = tf.placeholder(tf.float32, [None, 784])
@@ -19,6 +18,7 @@ for i in range(1000):
 
 correct_prediction = tf.equal(tf.argmax(y, 1), tf.argmax(y_, 1))
 accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
+print("训练准确度为：")
 print(accuracy.eval({x: mnist.test.images, y_: mnist.test.labels}))
 # print(mnist.train.images.shape, mnist.train.labels.shape)
 # print(mnist.test.images.shape, mnist.test.labels.shape)
